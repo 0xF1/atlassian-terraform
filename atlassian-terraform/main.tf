@@ -7,12 +7,8 @@ provider "aws" {
   secret_key = "${var.aws_secret_key}"
 }
 
-# ########################
-# Build the VPC
-# ########################
-
-module "vpc" {
-    source = "./vpc"
+module "network" {
+    source = "./network"
     public_subnet_zone_a_id = "${module.subnets.public_subnet_zone_a_id}"
     public_subnet_zone_b_id = "${module.subnets.public_subnet_zone_b_id}"
     public_subnet_zone_c_id = "${module.subnets.public_subnet_zone_c_id}"
@@ -23,31 +19,51 @@ module "vpc" {
 
 module "subnets" {
     source = "./subnets"
-    vpc_id = "${module.vpc.vpc_id}"
+    vpc_id = "${module.network.vpc_id}"
 }
 
 module "security_groups" {
     source = "./security_groups"
-    vpc_id = "${module.vpc.vpc_id}"
+    vpc_id = "${module.network.vpc_id}"
 }
 
-module "instances" {
-    source = "./instances"
-    vpc_id = "${module.vpc.vpc_id}"
+module "load_balancers" {
+    source = "./load_balancers"
+    public_subnet_zone_a_id = "${module.subnets.public_subnet_zone_a_id}"
+    public_subnet_zone_b_id = "${module.subnets.public_subnet_zone_b_id}"
+    public_subnet_zone_c_id = "${module.subnets.public_subnet_zone_c_id}"
+    pubSecGroupAtlassianId = "${module.security_groups.pubSecGroupAtlassianId}"
+
     private_subnet_zone_a_id = "${module.subnets.private_subnet_zone_a_id}"
     private_subnet_zone_b_id = "${module.subnets.private_subnet_zone_b_id}"
     private_subnet_zone_c_id = "${module.subnets.private_subnet_zone_c_id}"
+    #priSecGroupAtlassianId = "${module.security_groups.priSecGroupAtlassianId}"
+}
+
+module "asg" {
+    source = "./asg"
+    vpc_id = "${module.network.vpc_id}"
+
     public_subnet_zone_a_id = "${module.subnets.public_subnet_zone_a_id}"
     public_subnet_zone_b_id = "${module.subnets.public_subnet_zone_b_id}"
     public_subnet_zone_c_id = "${module.subnets.public_subnet_zone_c_id}"
 
     pubSecGroupAtlassianId = "${module.security_groups.pubSecGroupAtlassianId}"
+
+    private_subnet_zone_a_id = "${module.subnets.private_subnet_zone_a_id}"
+    private_subnet_zone_b_id = "${module.subnets.private_subnet_zone_b_id}"
+    private_subnet_zone_c_id = "${module.subnets.private_subnet_zone_c_id}"
+
     priSecGroupAtlassianId = "${module.security_groups.priSecGroupAtlassianId}"
+
+    elb_atlassian_publicId = "${module.load_balancers.elb_atlassian_public}"
+    elb_atlassian_privateId = "${module.load_balancers.elb_atlassian_private}"
+
+}  
+
+module "dns" {
+    source = "./dns"
+    elb_atlassian_public_dns_name = "${module.load_balancers.elb_atlassian_public_dns_name}"
+    elb_atlassian_private_dns_name = "${module.load_balancers.elb_atlassian_private_dns_name}"
 }
 
-module "asg" {
-    source = "./asg"
-    atlassian_private_host_zoneA_id = "${module.instances.atlassian_private_host_zoneA_id}"
-    atlassian_public_host_zoneA_id = "${module.instances.atlassian_public_host_zoneA_id}"
- 
-}  

@@ -8,13 +8,14 @@ variable "aws_key_name" {
   default     = "phooper-aws"
 }
 
+
 variable "aws_access_key" {
   description = "AWS access_key for connection."
-  default = ""
+  default = "AKIAIWUAE6GRAJD2KYUQ"
 }
 
 variable "aws_secret_key" {
   description = "AWS secret_key for connection."
-  default = ""
+  default = "N7klvU8RouKJCj6LnigowEKOof9M2WMRfg4Bjmr9"
 }
 
