@@ -1,5 +1,3 @@
-variable "vpc_id"          {}
-
 resource "aws_security_group" "priSecGroupAtlassian" {
   name = "priSecGroupAtlassian"
   description = "priSecGroupAtlassian"

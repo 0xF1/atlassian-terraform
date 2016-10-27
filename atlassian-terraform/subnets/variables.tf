@@ -60,3 +60,33 @@ variable "private_subnet_zone_c_name" {
   default = "priSubAtlassianZoneC"
 }
 
+variable "data_subnet_zone_a_cidr_block" {
+  description = "Data Subnet ZoneA CIDR"
+  default = "10.0.7.0/24"
+}
+
+variable "data_subnet_zone_a_name" {
+  description = "Data Subnet ZoneA NAME"
+  default = "dataSubAtlassianZoneA"
+}
+
+variable "data_subnet_zone_b_cidr_block" {
+  description = "Data Subnet ZoneB CIDR"
+  default = "10.0.8.0/24"
+}
+
+variable "data_subnet_zone_b_name" {
+  description = "Data Subnet ZoneB NAME"
+  default = "dataSubAtlassianZoneB"
+}
+
+variable "data_subnet_zone_c_cidr_block" {
+  description = "Data Subnet ZoneC CIDR"
+  default = "10.0.9.0/24"
+}
+
+variable "data_subnet_zone_c_name" {
+  description = "Data Subnet ZoneC NAME"
+  default = "dataSubAtlassianZoneC"
+}
+

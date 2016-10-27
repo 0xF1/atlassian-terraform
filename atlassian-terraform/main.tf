@@ -67,3 +67,12 @@ module "dns" {
     elb_atlassian_private_dns_name = "${module.load_balancers.elb_atlassian_private_dns_name}"
 }
 
+module "databases" {
+    source = "./databases"
+
+    dataSecGroupAtlassianId = "${module.security_groups.dataSecGroupAtlassianId}"
+    data_subnet_zone_a_id = "${module.subnets.data_subnet_zone_a_id}"
+    data_subnet_zone_b_id = "${module.subnets.data_subnet_zone_b_id}"
+    data_subnet_zone_c_id = "${module.subnets.data_subnet_zone_c_id}"
+}
+
