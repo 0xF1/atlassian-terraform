@@ -8,8 +8,8 @@ resource "aws_launch_configuration" "atlassian_public_configuration" {
     security_groups = ["${var.pubSecGroupAtlassianId}"]
     key_name        = "phooper-aws"
 
-    #associate_public_ip_address = "true"
-
+    # Set this to false if internet access is NOT required from the instances in the ASG
+    associate_public_ip_address = "true"
 
 }
 
