@@ -6,11 +6,11 @@ variable elb_atlassian_publicId  {}
 resource "aws_autoscaling_group" "atlassian_public" {
   availability_zones = ["eu-west-1a", "eu-west-1b", "eu-west-1c"]
   name = "asgAtlassianPublic"
-  max_size = 1
-  min_size = 1
+  max_size = "${var.image_capacity}"
+  min_size = "${var.image_capacity}"
   health_check_grace_period = 120
   health_check_type = "ELB"
-  desired_capacity = 1
+  desired_capacity = "${var.image_capacity}"
   force_delete = true
   launch_configuration = "${aws_launch_configuration.atlassian_public_configuration.name}"
   load_balancers = ["${var.elb_atlassian_publicId}"]

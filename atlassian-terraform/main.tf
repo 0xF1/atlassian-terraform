@@ -65,14 +65,35 @@ module "dns" {
     source = "./dns"
     elb_atlassian_public_dns_name = "${module.load_balancers.elb_atlassian_public_dns_name}"
     elb_atlassian_private_dns_name = "${module.load_balancers.elb_atlassian_private_dns_name}"
+    
+    rds_tooling_dns_name = "${module.databases.rds_tooling_dns_name}"
+
+    aws_efs_mount_target_private_zone_a_dns_name = "${module.filesystems.aws_efs_mount_target_private_zone_a_dns_name}"
+    aws_efs_mount_target_private_zone_b_dns_name = "${module.filesystems.aws_efs_mount_target_private_zone_b_dns_name}"
+    aws_efs_mount_target_private_zone_c_dns_name = "${module.filesystems.aws_efs_mount_target_private_zone_c_dns_name}"
 }
 
 module "databases" {
     source = "./databases"
 
     dataSecGroupAtlassianId = "${module.security_groups.dataSecGroupAtlassianId}"
+
+    private_subnet_zone_a_id = "${module.subnets.private_subnet_zone_a_id}"
+    private_subnet_zone_b_id = "${module.subnets.private_subnet_zone_b_id}"
+    private_subnet_zone_c_id = "${module.subnets.private_subnet_zone_c_id}"
+
     data_subnet_zone_a_id = "${module.subnets.data_subnet_zone_a_id}"
     data_subnet_zone_b_id = "${module.subnets.data_subnet_zone_b_id}"
     data_subnet_zone_c_id = "${module.subnets.data_subnet_zone_c_id}"
 }
 
+module "filesystems" {
+    source = "./filesystems"
+
+    private_subnet_zone_a_id = "${module.subnets.private_subnet_zone_a_id}"
+    private_subnet_zone_b_id = "${module.subnets.private_subnet_zone_b_id}"
+    private_subnet_zone_c_id = "${module.subnets.private_subnet_zone_c_id}"
+
+    priSecGroupAtlassianId = "${module.security_groups.priSecGroupAtlassianId}"
+
+}

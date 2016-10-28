@@ -2,7 +2,7 @@ variable pubSecGroupAtlassianId {}
 
 resource "aws_launch_configuration" "atlassian_public_configuration" {
     name = "atlassian_public_configuration"
-    image_id = "ami-d41d58a7"
+    image_id = "ami-085b107b"
     instance_type = "m3.medium"
 
     security_groups = ["${var.pubSecGroupAtlassianId}"]

@@ -1,14 +1,20 @@
 variable data_subnet_zone_a_id {}
 variable data_subnet_zone_b_id {}
 variable data_subnet_zone_c_id {}
+
+variable private_subnet_zone_a_id {}
+variable private_subnet_zone_b_id {}
+variable private_subnet_zone_c_id {}
+
 variable dataSecGroupAtlassianId {}
 
 resource "aws_db_instance" "tooling" {
-  allocated_storage    = 10
+  # Mysql needs at least a 5GB storage allocation
+  allocated_storage    = 5
   engine               = "mysql"
-  engine_version       = "5.7"
+  engine_version       = "5.7.11"
   identifier           = "rdstoolingdatabase"
-  instance_class       = "db.m3.medium"
+  instance_class       = "db.t2.micro"
   # Change to false for production-eqsue environments
   skip_final_snapshot  = "true"
   name                 = "rdsToolingDatabase"
@@ -30,9 +36,13 @@ resource "aws_db_instance" "tooling" {
 
 resource "aws_db_subnet_group" "tooling" {
     name = "rds_tooling_subnet"
-    subnet_ids = ["${var.data_subnet_zone_a_id}", "${var.data_subnet_zone_b_id}", "${var.data_subnet_zone_c_id}" ]
+    subnet_ids = ["${var.data_subnet_zone_a_id}", "${var.data_subnet_zone_b_id}", "${var.data_subnet_zone_c_id}", "${var.private_subnet_zone_a_id}", "${var.private_subnet_zone_b_id}", "${var.private_subnet_zone_c_id}" ]
     tags {
         Name = "rdsToolingSubnet"
     }
 
+}
+
+output "rds_tooling_dns_name" {
+    value = "${aws_db_instance.tooling.address}"
 }
