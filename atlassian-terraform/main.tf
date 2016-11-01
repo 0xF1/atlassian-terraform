@@ -32,12 +32,12 @@ module "load_balancers" {
     public_subnet_zone_a_id = "${module.subnets.public_subnet_zone_a_id}"
     public_subnet_zone_b_id = "${module.subnets.public_subnet_zone_b_id}"
     public_subnet_zone_c_id = "${module.subnets.public_subnet_zone_c_id}"
-    pubSecGroupAtlassianId = "${module.security_groups.pubSecGroupAtlassianId}"
+    pubSecGroupRancherId = "${module.security_groups.pubSecGroupRancherId}"
 
     private_subnet_zone_a_id = "${module.subnets.private_subnet_zone_a_id}"
     private_subnet_zone_b_id = "${module.subnets.private_subnet_zone_b_id}"
     private_subnet_zone_c_id = "${module.subnets.private_subnet_zone_c_id}"
-    #priSecGroupAtlassianId = "${module.security_groups.priSecGroupAtlassianId}"
+    #priSecGroupRancherId = "${module.security_groups.priSecGroupRancherId}"
 }
 
 module "asg" {
@@ -48,23 +48,23 @@ module "asg" {
     public_subnet_zone_b_id = "${module.subnets.public_subnet_zone_b_id}"
     public_subnet_zone_c_id = "${module.subnets.public_subnet_zone_c_id}"
 
-    pubSecGroupAtlassianId = "${module.security_groups.pubSecGroupAtlassianId}"
+    pubSecGroupRancherId = "${module.security_groups.pubSecGroupRancherId}"
 
-    private_subnet_zone_a_id = "${module.subnets.private_subnet_zone_a_id}"
-    private_subnet_zone_b_id = "${module.subnets.private_subnet_zone_b_id}"
-    private_subnet_zone_c_id = "${module.subnets.private_subnet_zone_c_id}"
+    #private_subnet_zone_a_id = "${module.subnets.private_subnet_zone_a_id}"
+    #private_subnet_zone_b_id = "${module.subnets.private_subnet_zone_b_id}"
+    #private_subnet_zone_c_id = "${module.subnets.private_subnet_zone_c_id}"
 
-    priSecGroupAtlassianId = "${module.security_groups.priSecGroupAtlassianId}"
+    #priSecGroupRancherId = "${module.security_groups.priSecGroupRancherId}"
 
-    elb_atlassian_publicId = "${module.load_balancers.elb_atlassian_public}"
-    elb_atlassian_privateId = "${module.load_balancers.elb_atlassian_private}"
+    elb_rancher_publicId = "${module.load_balancers.elb_rancher_public}"
+    #elb_rancher_privateId = "${module.load_balancers.elb_rancher_private}"
 
 }  
 
 module "dns" {
     source = "./dns"
-    elb_atlassian_public_dns_name = "${module.load_balancers.elb_atlassian_public_dns_name}"
-    elb_atlassian_private_dns_name = "${module.load_balancers.elb_atlassian_private_dns_name}"
+    elb_rancher_public_dns_name = "${module.load_balancers.elb_rancher_public_dns_name}"
+    elb_rancher_private_dns_name = "${module.load_balancers.elb_rancher_private_dns_name}"
     
     rds_tooling_dns_name = "${module.databases.rds_tooling_dns_name}"
 
@@ -76,7 +76,11 @@ module "dns" {
 module "databases" {
     source = "./databases"
 
-    dataSecGroupAtlassianId = "${module.security_groups.dataSecGroupAtlassianId}"
+    dataSecGroupRancherId = "${module.security_groups.dataSecGroupRancherId}"
+
+    public_subnet_zone_a_id = "${module.subnets.public_subnet_zone_a_id}"
+    public_subnet_zone_b_id = "${module.subnets.public_subnet_zone_b_id}"
+    public_subnet_zone_c_id = "${module.subnets.public_subnet_zone_c_id}"
 
     private_subnet_zone_a_id = "${module.subnets.private_subnet_zone_a_id}"
     private_subnet_zone_b_id = "${module.subnets.private_subnet_zone_b_id}"
@@ -94,6 +98,6 @@ module "filesystems" {
     private_subnet_zone_b_id = "${module.subnets.private_subnet_zone_b_id}"
     private_subnet_zone_c_id = "${module.subnets.private_subnet_zone_c_id}"
 
-    priSecGroupAtlassianId = "${module.security_groups.priSecGroupAtlassianId}"
+    priSecGroupRancherId = "${module.security_groups.priSecGroupRancherId}"
 
 }

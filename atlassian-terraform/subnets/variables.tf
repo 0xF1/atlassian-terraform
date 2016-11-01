@@ -7,7 +7,7 @@ variable "public_subnet_zone_a_cidr_block" {
 
 variable "public_subnet_zone_a_name" {
   description = "Public Subnet ZoneA NAME"
-  default = "pubSubAtlassianZoneA"
+  default = "pubSubRancherZoneA"
 }
 
 variable "public_subnet_zone_b_cidr_block" {
@@ -17,7 +17,7 @@ variable "public_subnet_zone_b_cidr_block" {
 
 variable "public_subnet_zone_b_name" {
   description = "Public Subnet ZoneB NAME"
-  default = "pubSubAtlassianZoneB"
+  default = "pubSubRancherZoneB"
 }
 
 variable "public_subnet_zone_c_cidr_block" {
@@ -27,7 +27,7 @@ variable "public_subnet_zone_c_cidr_block" {
 
 variable "public_subnet_zone_c_name" {
   description = "Public Subnet ZoneC NAME"
-  default = "pubSubAtlassianZoneC"
+  default = "pubSubRancherZoneC"
 }
 
 variable "private_subnet_zone_a_cidr_block" {
@@ -37,7 +37,7 @@ variable "private_subnet_zone_a_cidr_block" {
 
 variable "private_subnet_zone_a_name" {
   description = "Private Subnet ZoneA NAME"
-  default = "priSubAtlassianZoneA"
+  default = "priSubRancherZoneA"
 }
 
 variable "private_subnet_zone_b_cidr_block" {
@@ -47,7 +47,7 @@ variable "private_subnet_zone_b_cidr_block" {
 
 variable "private_subnet_zone_b_name" {
   description = "Private Subnet ZoneB NAME"
-  default = "priSubAtlassianZoneB"
+  default = "priSubRancherZoneB"
 }
 
 variable "private_subnet_zone_c_cidr_block" {
@@ -57,7 +57,7 @@ variable "private_subnet_zone_c_cidr_block" {
 
 variable "private_subnet_zone_c_name" {
   description = "Private Subnet ZoneC NAME"
-  default = "priSubAtlassianZoneC"
+  default = "priSubRancherZoneC"
 }
 
 variable "data_subnet_zone_a_cidr_block" {
@@ -67,7 +67,7 @@ variable "data_subnet_zone_a_cidr_block" {
 
 variable "data_subnet_zone_a_name" {
   description = "Data Subnet ZoneA NAME"
-  default = "dataSubAtlassianZoneA"
+  default = "dataSubRancherZoneA"
 }
 
 variable "data_subnet_zone_b_cidr_block" {
@@ -77,7 +77,7 @@ variable "data_subnet_zone_b_cidr_block" {
 
 variable "data_subnet_zone_b_name" {
   description = "Data Subnet ZoneB NAME"
-  default = "dataSubAtlassianZoneB"
+  default = "dataSubRancherZoneB"
 }
 
 variable "data_subnet_zone_c_cidr_block" {
@@ -87,6 +87,6 @@ variable "data_subnet_zone_c_cidr_block" {
 
 variable "data_subnet_zone_c_name" {
   description = "Data Subnet ZoneC NAME"
-  default = "dataSubAtlassianZoneC"
+  default = "dataSubRancherZoneC"
 }
 

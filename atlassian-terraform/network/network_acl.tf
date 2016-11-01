@@ -1,5 +1,5 @@
-resource "aws_network_acl" "atlassian" {
-    vpc_id = "${aws_vpc.atlassian.id}"
+resource "aws_network_acl" "rancher" {
+    vpc_id = "${aws_vpc.rancher.id}"
     subnet_ids = ["${var.public_subnet_zone_a_id}", "${var.public_subnet_zone_b_id}", "${var.public_subnet_zone_c_id}"]
     egress {
         protocol = "all"
@@ -20,6 +20,6 @@ resource "aws_network_acl" "atlassian" {
     }
 
     tags {
-        Name = "naclAtlassian"
+        Name = "naclRancher"
     }
 }

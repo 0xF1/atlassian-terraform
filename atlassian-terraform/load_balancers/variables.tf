@@ -1,1 +1,1 @@
-variable pubSecGroupAtlassianId  {}
+variable pubSecGroupRancherId  {}

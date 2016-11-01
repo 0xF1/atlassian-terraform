@@ -1,8 +1,8 @@
-resource "aws_internet_gateway" "atlassian" {
-    vpc_id = "${aws_vpc.atlassian.id}"
+resource "aws_internet_gateway" "rancher" {
+    vpc_id = "${aws_vpc.rancher.id}"
 
     tags {
-        Name = "igwAtlassian"
+        Name = "igwRancher"
     }
 
 }

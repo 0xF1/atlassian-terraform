@@ -1,6 +1,6 @@
-resource "aws_security_group" "pubSecGroupAtlassian" {
-  name = "pubSecGroupAtlassian"
-  description = "pubSecGroupAtlassian"
+resource "aws_security_group" "pubSecGroupRancher" {
+  name = "pubSecGroupRancher"
+  description = "pubSecGroupRancher"
   vpc_id      = "${var.vpc_id}"
 
   ingress {
@@ -31,6 +31,13 @@ resource "aws_security_group" "pubSecGroupAtlassian" {
       cidr_blocks = ["0.0.0.0/0"]
   }
 
+  ingress {
+      from_port = 0
+      to_port = 0
+      protocol = "-1"
+      cidr_blocks = ["0.0.0.0/0"]
+  }
+
   egress {
       from_port = 0
       to_port = 0
@@ -39,10 +46,10 @@ resource "aws_security_group" "pubSecGroupAtlassian" {
   }
 
   tags {
-      Name = "pubSecGroupAtlassian"
+      Name = "pubSecGroupRancher"
   }
 }
 
-output "pubSecGroupAtlassianId" {
-   value = "${aws_security_group.pubSecGroupAtlassian.id}"
+output "pubSecGroupRancherId" {
+   value = "${aws_security_group.pubSecGroupRancher.id}"
 }

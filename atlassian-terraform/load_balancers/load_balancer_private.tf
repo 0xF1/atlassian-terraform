@@ -2,10 +2,10 @@ variable private_subnet_zone_a_id {}
 variable private_subnet_zone_b_id {}
 variable private_subnet_zone_c_id {}
 
-resource "aws_elb" "atlassian_private" {
-  name = "elbAtlassianPrivate"
+resource "aws_elb" "rancher_private" {
+  name = "elbRancherPrivate"
   subnets = ["${var.private_subnet_zone_a_id}", "${var.private_subnet_zone_b_id}", "${var.private_subnet_zone_c_id}"]
-  security_groups = ["${var.pubSecGroupAtlassianId}"]
+  security_groups = ["${var.pubSecGroupRancherId}"]
   internal = "true"
 
   listener {
@@ -30,15 +30,15 @@ resource "aws_elb" "atlassian_private" {
   connection_draining_timeout = 400
 
   tags {
-    Name = "elbAtlassianPrivate"
+    Name = "elbRancherPrivate"
   }
 }
 
-output "elb_atlassian_private" {
-    value = "${aws_elb.atlassian_private.id}"
+output "elb_rancher_private" {
+    value = "${aws_elb.rancher_private.id}"
 }
 
-output "elb_atlassian_private_dns_name" {
-    value = "${aws_elb.atlassian_private.dns_name}"
+output "elb_rancher_private_dns_name" {
+    value = "${aws_elb.rancher_private.dns_name}"
 }
 

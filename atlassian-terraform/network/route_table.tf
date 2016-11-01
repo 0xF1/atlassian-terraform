@@ -1,11 +1,11 @@
-resource "aws_route_table" "atlassian" {
-    vpc_id = "${aws_vpc.atlassian.id}"
+resource "aws_route_table" "rancher" {
+    vpc_id = "${aws_vpc.rancher.id}"
     route {
         cidr_block = "0.0.0.0/0"
-        gateway_id = "${aws_internet_gateway.atlassian.id}"
+        gateway_id = "${aws_internet_gateway.rancher.id}"
     }
 
     tags {
-        Name = "rtbAtlassian"
+        Name = "rtbRancher"
     }
 }

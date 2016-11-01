@@ -1,8 +1,8 @@
 variable rds_tooling_dns_name {}
 
-resource "aws_route53_record" "atlassian-data" {
+resource "aws_route53_record" "rancher-data" {
   zone_id = "Z4PKVG2H6HOI4"
-  name = "atlassian-data"
+  name = "rancher-data"
   type = "CNAME"
   ttl = "1"
   weighted_routing_policy {

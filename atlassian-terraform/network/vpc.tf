@@ -1,7 +1,7 @@
 # ----------------------------------------------
 # Create a VPC to launch our instances into
 # ----------------------------------------------
-resource "aws_vpc" "atlassian" {
+resource "aws_vpc" "rancher" {
   cidr_block = "10.0.0.0/16"
   enable_dns_hostnames = true
   enable_dns_support   = true
@@ -12,5 +12,5 @@ resource "aws_vpc" "atlassian" {
 }
 
 output "vpc_id" {
-    value = "${aws_vpc.atlassian.id}"
+    value = "${aws_vpc.rancher.id}"
 }

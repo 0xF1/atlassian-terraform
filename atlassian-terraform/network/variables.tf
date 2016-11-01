@@ -7,6 +7,6 @@ variable "private_subnet_zone_c_id" {}
 
 variable "aws_vpc_name" {
   description = "AWS VPC name"
-  default = "vpcAtlassian"
+  default = "vpcRancher"
 }
 
