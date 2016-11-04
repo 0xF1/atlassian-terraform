@@ -14,14 +14,14 @@ mkdir -p /var/lib/rancher/bin
 echo Creating /var/lib/rancher/etc/server.conf
 cat > /var/lib/rancher/etc/server.conf << EOF
 export CATTLE_HA_CLUSTER_SIZE=3
-export CATTLE_HA_HOST_REGISTRATION_URL=https://rancher-public.fastervl.com
+export CATTLE_HA_HOST_REGISTRATION_URL=https://rancher.fastervl.com
 export CATTLE_HA_CONTAINER_PREFIX=rancher-ha-
 
 export CATTLE_DB_CATTLE_MYSQL_HOST=rancher-data.fastervl.com
 export CATTLE_DB_CATTLE_MYSQL_PORT=3306
 export CATTLE_DB_CATTLE_MYSQL_NAME=cattle
 export CATTLE_DB_CATTLE_USERNAME=cattle
-export CATTLE_DB_CATTLE_PASSWORD=6799cd25259d859922723070967e124c:98383151d93c59fec708c130c957d6bf
+export CATTLE_DB_CATTLE_PASSWORD=3ffc3b25bdf93ff8734e07cd623b8ed7:718a544ecf96f22af643f0259afdeecc
 
 export CATTLE_HA_PORT_REDIS=6379
 export CATTLE_HA_PORT_SWARM=2376
@@ -45,7 +45,7 @@ if [ -e /var/lib/rancher/etc/server/encryption.key ]; then
     mv /var/lib/rancher/etc/server/encryption.key /var/lib/rancher/etc/server/encryption.key.`date '+%s'`
 fi
 cat > /var/lib/rancher/etc/server/encryption.key << EOF
-MmltFwOvHlP73Ba57zpUCdWjdEq7CJP9uWtz0DTUqMM=
+5+aeTqvIITX657sJWOehzxq6zkH/dUCKRv3KBMBdT8c=
 EOF
 
 

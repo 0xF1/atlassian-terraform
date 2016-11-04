@@ -1,5 +1,5 @@
-#variable priSecGroupRancherId {}
-#
+variable priSecGroupRancherId {}
+
 #resource "aws_launch_configuration" "rancher_private_configuration" {
 #    name = "rancher_private_configuration"
 #    image_id = "ami-b47c32c7"

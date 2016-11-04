@@ -14,11 +14,12 @@ variable dataSecGroupRancherId {}
 
 resource "aws_db_instance" "tooling" {
   # Mysql needs at least a 5GB storage allocation
-  allocated_storage    = 5
+  iops                 = "1000"
+  allocated_storage    = 100
   engine               = "mysql"
   engine_version       = "5.7.11"
   identifier           = "rdstoolingdatabase"
-  instance_class       = "db.t2.micro"
+  instance_class       = "db.m4.xlarge"
   # Change to false for production-eqsue environments
   skip_final_snapshot  = "true"
   name                 = "rdsToolingDatabase"

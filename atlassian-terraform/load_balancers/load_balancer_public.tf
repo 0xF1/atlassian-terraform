@@ -9,17 +9,25 @@ resource "aws_elb" "rancher_public" {
 
   listener {
     lb_port = 80
-    lb_protocol = "http"
-    instance_port = 18080
-    instance_protocol = "http"
+    lb_protocol = "tcp"
+    instance_port = 81
+    instance_protocol = "tcp"
   }
 
   listener {
-    lb_port = 8080
-    lb_protocol = "http"
-    instance_port = 8080
-    instance_protocol = "http"
+    lb_port = 443
+    lb_protocol = "ssl"
+    instance_port = 81
+    instance_protocol = "tcp"
+    ssl_certificate_id = "arn:aws:acm:eu-west-1:702440161528:certificate/1734793d-035b-456c-b2a7-875a0efcafc3"
   }
+
+  #listener {
+    #lb_port = 8080
+    #lb_protocol = "http"
+    #instance_port = 8080
+    #instance_protocol = "http"
+  #}
 
   health_check {
     unhealthy_threshold = 2

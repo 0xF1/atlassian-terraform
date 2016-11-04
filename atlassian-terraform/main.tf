@@ -50,14 +50,14 @@ module "asg" {
 
     pubSecGroupRancherId = "${module.security_groups.pubSecGroupRancherId}"
 
-    #private_subnet_zone_a_id = "${module.subnets.private_subnet_zone_a_id}"
-    #private_subnet_zone_b_id = "${module.subnets.private_subnet_zone_b_id}"
-    #private_subnet_zone_c_id = "${module.subnets.private_subnet_zone_c_id}"
+    private_subnet_zone_a_id = "${module.subnets.private_subnet_zone_a_id}"
+    private_subnet_zone_b_id = "${module.subnets.private_subnet_zone_b_id}"
+    private_subnet_zone_c_id = "${module.subnets.private_subnet_zone_c_id}"
 
-    #priSecGroupRancherId = "${module.security_groups.priSecGroupRancherId}"
+    priSecGroupRancherId = "${module.security_groups.priSecGroupRancherId}"
 
     elb_rancher_publicId = "${module.load_balancers.elb_rancher_public}"
-    #elb_rancher_privateId = "${module.load_balancers.elb_rancher_private}"
+    elb_rancher_privateId = "${module.load_balancers.elb_rancher_private}"
 
 }  
 
@@ -68,9 +68,9 @@ module "dns" {
     
     rds_tooling_dns_name = "${module.databases.rds_tooling_dns_name}"
 
-    aws_efs_mount_target_private_zone_a_dns_name = "${module.filesystems.aws_efs_mount_target_private_zone_a_dns_name}"
-    aws_efs_mount_target_private_zone_b_dns_name = "${module.filesystems.aws_efs_mount_target_private_zone_b_dns_name}"
-    aws_efs_mount_target_private_zone_c_dns_name = "${module.filesystems.aws_efs_mount_target_private_zone_c_dns_name}"
+    #aws_efs_mount_target_private_zone_a_dns_name = "${module.filesystems.aws_efs_mount_target_private_zone_a_dns_name}"
+    #aws_efs_mount_target_private_zone_b_dns_name = "${module.filesystems.aws_efs_mount_target_private_zone_b_dns_name}"
+    #aws_efs_mount_target_private_zone_c_dns_name = "${module.filesystems.aws_efs_mount_target_private_zone_c_dns_name}"
 }
 
 module "databases" {
@@ -91,13 +91,13 @@ module "databases" {
     data_subnet_zone_c_id = "${module.subnets.data_subnet_zone_c_id}"
 }
 
-module "filesystems" {
-    source = "./filesystems"
+#module "filesystems" {
+    #source = "./filesystems"
 
-    private_subnet_zone_a_id = "${module.subnets.private_subnet_zone_a_id}"
-    private_subnet_zone_b_id = "${module.subnets.private_subnet_zone_b_id}"
-    private_subnet_zone_c_id = "${module.subnets.private_subnet_zone_c_id}"
+    #private_subnet_zone_a_id = "${module.subnets.private_subnet_zone_a_id}"
+    #private_subnet_zone_b_id = "${module.subnets.private_subnet_zone_b_id}"
+    #private_subnet_zone_c_id = "${module.subnets.private_subnet_zone_c_id}"
 
-    priSecGroupRancherId = "${module.security_groups.priSecGroupRancherId}"
+    #priSecGroupRancherId = "${module.security_groups.priSecGroupRancherId}"
 
-}
+#}
