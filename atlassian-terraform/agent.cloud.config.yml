@@ -1,0 +1,18 @@
+#cloud-config
+rancher:
+  resize_device: /dev/xvda
+  cloud_init:
+    datasources:
+      - ec2
+  services:
+    rancher-agent1:
+      privileged: true
+      volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /var/lib/rancher:/var/lib/rancher
+      image: rancher/agent:v1.0.2
+      environment:
+        - CATTLE_HOST_LABELS=Application=Atlassian&Environment=Production
+        - CA_FINGERPRINT="A9:17:1A:08:5A:F2:FC:8F:42:26:7B:07:CB:F3:A5:0A:6A:98:82:1A"
+      command:
+        - https://rancher.fastervl.com/v1/scripts/6C6E7D054B91CB440B0D:1478779200000:A48dQWUBqdY2JBiWZQh2to5MHc4

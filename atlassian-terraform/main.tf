@@ -25,6 +25,7 @@ module "subnets" {
 module "security_groups" {
     source = "./security_groups"
     vpc_id = "${module.network.vpc_id}"
+
 }
 
 module "load_balancers" {
@@ -67,6 +68,7 @@ module "dns" {
     elb_rancher_private_dns_name = "${module.load_balancers.elb_rancher_private_dns_name}"
     
     rds_tooling_dns_name = "${module.databases.rds_tooling_dns_name}"
+    rds_atlassian_dns_name = "${module.databases.rds_atlassian_dns_name}"
 
     #aws_efs_mount_target_private_zone_a_dns_name = "${module.filesystems.aws_efs_mount_target_private_zone_a_dns_name}"
     #aws_efs_mount_target_private_zone_b_dns_name = "${module.filesystems.aws_efs_mount_target_private_zone_b_dns_name}"

@@ -1,16 +1,3 @@
-variable data_subnet_zone_a_id {}
-variable data_subnet_zone_b_id {}
-variable data_subnet_zone_c_id {}
-
-variable private_subnet_zone_a_id {}
-variable private_subnet_zone_b_id {}
-variable private_subnet_zone_c_id {}
-
-variable public_subnet_zone_a_id {}
-variable public_subnet_zone_b_id {}
-variable public_subnet_zone_c_id {}
-
-variable dataSecGroupRancherId {}
 
 resource "aws_db_instance" "tooling" {
   # Mysql needs at least a 5GB storage allocation
@@ -32,6 +19,7 @@ resource "aws_db_instance" "tooling" {
   apply_immediately    = "true"
   db_subnet_group_name = "${aws_db_subnet_group.tooling.name}"
   parameter_group_name = "${aws_db_parameter_group.tooling.name}"
+  snapshot_identifier  = "rancher-ha-production"
 
   tags {
       Name = "rdsRancherDatabase"
@@ -57,6 +45,18 @@ resource "aws_db_parameter_group" "tooling" {
       value = "200"
       apply_method = "immediate"
     }
+
+    #parameter {
+      #name = "innodb_default_row_format"
+      #value = "DYNAMIC"
+      #apply_method = "immediate"
+    #}
+
+    #parameter {
+      #name = "innodb_file_format"
+      #value = "Barracuda"
+      #apply_method = "immediate"
+    #}
 }
 
 output "rds_tooling_dns_name" {
