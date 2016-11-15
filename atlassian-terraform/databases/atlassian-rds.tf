@@ -7,7 +7,7 @@ resource "aws_db_instance" "atlassian" {
   instance_class       = "db.m4.xlarge"
   # Change to false for production-eqsue environments
   skip_final_snapshot  = "true"
-  name                 = "rdsatlassiandatabase"
+  name                 = "atlassian"
   username             = "root"
   #password             = "rootroot"
   # Set to true for production
