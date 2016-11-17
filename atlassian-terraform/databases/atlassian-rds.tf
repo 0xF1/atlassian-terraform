@@ -15,7 +15,7 @@ resource "aws_db_instance" "atlassian" {
   port                 = "5432"
   vpc_security_group_ids  = ["${var.dataSecGroupRancherId}"]
   apply_immediately    = "true"
-  snapshot_identifier  = "production-crowd-and-jira"
+  snapshot_identifier  = "atlassian-production"
   db_subnet_group_name = "${aws_db_subnet_group.atlassian.name}"
   final_snapshot_identifier = "final-snapshot-atlassian"
 
